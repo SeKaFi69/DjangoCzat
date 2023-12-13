@@ -1,0 +1,25 @@
+<html>
+  <head></head>
+  <body>
+    <h1>Witaj w aplikacji Czat!</h1>
+
+    <h2>Dodaj wiadomość</h2>
+    <form action="." method="POST">
+      {% csrf_token %}
+      <input type="text" name="tekst" />
+      <input type="submit" value="Zapisz" />
+    </form>
+
+    <h2>Lista wiadomości:</h2>
+    <ol>
+      {% for wiadomosc in wiadomosci %}
+      <li>
+        <strong>{{ wiadomosc.autor.username }}</strong>
+        ({{ wiadomosc.data_pub }}): <br />
+        {{ wiadomosc.tekst }}
+      </li>
+      {% endfor %}
+    </ol>
+    <a href="/">Strona główna</a>
+  </body>
+</html>
